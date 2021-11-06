@@ -1,20 +1,67 @@
 import streamlit as st
-import requests
+import question_generator as qg
 
+# TITLE
 st.title("Question generator")
 
-subject = st.selectbox("Select subject", ["Physics", "General", "Language"])
+# LANGUAGE
+language = st.selectbox("Select Language", ["English", "Deutsch"])
 
-if subject == "Physics":
+# SUBJECT
+if language == "English":
+    subject = st.selectbox("Select subject", ["Physics", "General", "Trivia", "Language"])
+elif language == "Deutsch":
+    subject = st.selectbox("Wähle Fach", ["Allgemein"])
 
-    user_input = st.text_input("Enter concept name")
-
-    if user_input != "":
+# CATEGORY, DIFFICULTY, TYPE
+category = None
+difficulty = None
+type = None
+if subject == "Trivia":
     
-        response = requests.get(f"https://physwikiquiz.wmflabs.org/api/v1?name={user_input}")
+    # query category
+    category = st.selectbox("Select category", ["General Knowledge", "Science & Nature", "Science: Computers"])
+    # map category
+    category = {"General Knowledge": 9, "Science & Nature": 17, "Science: Computers": 18}[category]
+    
+    # query difficulty
+    difficulty = st.selectbox("Select difficulty", ["Easy", "Medium", "Hard"])
+    # map difficulty
+    difficulty = difficulty.lower()
+    
+    # query type
+    type = st.selectbox("Select type", ["Multiple Choice", "True/False"])
+    # map type
+    type = {"Multiple Choice": "multiple", "True/False": "boolean"}[type]
 
-        st.write(response.json())
+# AMOUNT
+if subject != "General" and subject != "Allgemein" and subject != "Language":
+    amount = st.slider("Amount of questions", 1, 10)
+else:
+    amount = 1
 
-elif subject == "General":
+# TEXT
+if subject == "Trivia":
+    concept = "Trivia"
+else:
+    if language == "English":
+        subject_query_text = {"Physics": "concept name", "Trivia": "category", "General": "text", "Language": "text"}
+        query_text = "Enter " + subject_query_text[subject]
+        if subject == "Physics":
+            concept = st.text_input(query_text)
+            text = ""
+        elif subject == "General" or subject == "Language":
+            text = st.text_input(query_text)
+            concept = ""
+    elif language == "Deutsch":
+        query_text = "Gib Text ein"
+        if subject == "Allgemein":
+            text = st.text_input(query_text)
+            concept = ""
 
-    user_input = st.text_input("Enter text")
+# GENERATION
+if not (concept == "" and text == ""):
+
+    questions = qg.get_questions(subject, category, concept, text, language, difficulty, type, amount)
+    for question in questions:
+        st.write(question)
