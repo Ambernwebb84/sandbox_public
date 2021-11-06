@@ -41,6 +41,7 @@ else:
     amount = 1
 
 # CONCEPT AND TEXT
+text = ""
 if subject == "Trivia":
     concept = "Trivia"
     text = ""
