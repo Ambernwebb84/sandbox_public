@@ -1,6 +1,6 @@
 import requests
 import itertools
-#from text_quiz import generate_question_answers
+from text_quiz import generate_question_answers
 
 def get_response(url):
     """
@@ -37,7 +37,6 @@ def get_questions(subject, category, concept, text, language, difficulty, type, 
                 questions.append(question['question'] + " a) " + question['correct_answer'] + " b) " + question['incorrect_answers'][0])
             
     elif subject == "General" or subject == "Allgemein":
-        questions = []
-        #questions = generate_question_answers(text, language)
+        questions = generate_question_answers(text, language)
 
     return questions
