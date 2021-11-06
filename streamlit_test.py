@@ -40,9 +40,10 @@ if subject != "General" and subject != "Allgemein" and subject != "Language":
 else:
     amount = 1
 
-# TEXT
+# CONCEPT AND TEXT
 if subject == "Trivia":
     concept = "Trivia"
+    text = ""
 else:
     if language == "English":
         subject_query_text = {"Physics": "concept name", "Trivia": "category", "General": "text", "Language": "text"}
