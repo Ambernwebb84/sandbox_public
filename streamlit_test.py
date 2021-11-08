@@ -62,9 +62,8 @@ else:
             concept = ""
 
 # GENERATION
-text = ""
 if not (concept == "" and text == ""):
-
+    text = 'test'
     questions = qg.get_questions(subject, category, concept, text, language, difficulty, type, amount)
     for question in questions:
         st.write(question)
