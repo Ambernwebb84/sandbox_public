@@ -62,6 +62,7 @@ else:
             concept = ""
 
 # GENERATION
+text = ""
 if not (concept == "" and text == ""):
 
     questions = qg.get_questions(subject, category, concept, text, language, difficulty, type, amount)
