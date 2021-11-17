@@ -1,9 +1,9 @@
-StepNo,Timing,BeatValue,FootPosition,FootWork,ActionUsed,BodyTurn
-1,Q,1,LF back,B flat,Jive Rock,-
-2,Q,1,RF in place,B flat,Jive Rock,-
-3,Q,3/4,LF fwd,B,Jive Chasse LRL / fwd / turned strongly to R on step 5,3/8 to R
-4,a,1/4,RF half closed to LF,B,Jive Chasse LRL / fwd / turned strongly to R on step 5,3/8 to R
-5,Q,1,LF back and slightly to side,B flat,Jive Chasse LRL / fwd / turned strongly to R on step 5,3/8 to R
-6,Q,3/4,RF fwd,B,Jive Chasse RLR fwd,-
-7,a,1/4,LF half closed to RF,B,Jive Chasse RLR fwd,-
-8,Q,1,RF fwd,B flat,Jive Chasse RLR fwd,-
+StepNo;Timing;BeatValue;FootPosition;FootWork;ActionUsed;BodyTurn
+1;Q;1;LF back;B flat;Jive Rock;-
+2;Q;1;RF in place;B flat;Jive Rock;-
+3;Q;3/4;LF fwd;B;Jive Chasse LRL / fwd / turned strongly to R on step 5;3/8 to R
+4;a;1/4;RF half closed to LF;B;Jive Chasse LRL / fwd / turned strongly to R on step 5;3/8 to R
+5;Q;1;LF back and slightly to side;B flat;Jive Chasse LRL / fwd / turned strongly to R on step 5;3/8 to R
+6;Q;3/4;RF fwd;B;Jive Chasse RLR fwd;-
+7;a;1/4;LF half closed to RF;B;Jive Chasse RLR fwd;-
+8;Q;1;RF fwd;B flat;Jive Chasse RLR fwd;-
