@@ -68,8 +68,8 @@ def get_figures_techniques_dict(data_path,figures):
 
     return dance_figures_technique_dict
 
-# Get random dance figure question
-def get_random_dance_figure_question():
+# Get random multiple choice dance figure question
+def get_random_multiple_choice_dance_figure_question():
 
     data_path = "data/dancing_figures/Latin/"
 
@@ -88,3 +88,22 @@ def get_random_dance_figure_question():
         figure_names_techniques.append((figure_name,figure_technique))
 
     return figure_names_techniques
+
+# Get random text line dance figure question
+def get_random_text_line_dance_figure_question():
+
+    data_path = "data/dancing_figures/Latin/"
+
+    # Dance figures dict
+    figures = get_dance_figures(data_path)
+    dance_figures_dict = get_figures_techniques_dict(data_path,figures)
+
+    # Get random figure technique
+    technique_numbers = list(dance_figures_dict.items())[0][1].__len__()
+    technique_number = random.randrange(1, technique_numbers, 1)
+    figure_name = get_random_figure(figures)
+    figure_techniques = dance_figures_dict[figure_name]
+    figure_technique = get_random_technique(figure_techniques,technique_number)
+    figure_name_technique = (figure_name,figure_technique)
+
+    return figure_name_technique
