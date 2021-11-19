@@ -3,6 +3,8 @@ import dancing_technique
 import json
 import random
 
+data_path = "data/dancing_figures/"
+
 # # LOAD CACHE
 with open("cache.json", 'r') as f:
     cache = json.load(f)
@@ -25,8 +27,10 @@ col1,col2 = st.columns(2)
 col1.header('Question')
 with col1:
 
+    dancing_domain = st.selectbox("Select domain", ["Ballroom", "Latin"])
+
     if st.button('Random figure'):
-        question = dancing_technique.get_random_text_line_dance_figure_question()
+        question = dancing_technique.get_random_text_line_dance_figure_question(data_path,dancing_domain)
         question_level = 'all_steps'
     figure_name, technique_name, technique_details = get_technique_properties(question)
     col1.write(figure_name + ", " + technique_name)
