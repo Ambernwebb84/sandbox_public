@@ -102,13 +102,16 @@ def get_random_multiple_choice_dance_figure_question(data_path,dancing_domain):
     return figure_names_techniques
 
 # Get random text line dance figure question
-def get_random_text_line_dance_figure_question(data_path,dancing_domain):
+def get_random_text_line_dance_figure_question(data_path,dancing_domain,only_exam):
 
     file_path = data_path + dancing_domain + '/'
     if dancing_domain == 'Ballroom':
         delimiter = ","
     elif dancing_domain == 'Latin':
         delimiter = ";"
+
+    if only_exam:
+        file_path += 'exam_selection/'
 
     # Dance figures dict
     figures = get_dance_figures(file_path)

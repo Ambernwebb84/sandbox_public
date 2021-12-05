@@ -19,6 +19,16 @@ def get_technique_properties(question):
     technique_details = list(figure_technique[1].values())
     return figure_name,technique_name,technique_details
 
+# hide streamlit menu and footer
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+
+"""
+#st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.header('Dancing Technique Quiz')
 
 col1,col2 = st.columns(2)
@@ -28,9 +38,13 @@ col1.header('Question')
 with col1:
 
     dancing_domain = st.selectbox("Select domain", ["Ballroom", "Latin"])
+    figure_subset = st.selectbox("Select subset", ["All", "Exam"])
+    only_exam = False
+    if figure_subset == 'Exam':
+        only_exam = True
 
     if st.button('Random figure'):
-        question = dancing_technique.get_random_text_line_dance_figure_question(data_path,dancing_domain)
+        question = dancing_technique.get_random_text_line_dance_figure_question(data_path,dancing_domain,only_exam)
         question_level = 'all_steps'
     figure_name, technique_name, technique_details = get_technique_properties(question)
     col1.write(figure_name + ", " + technique_name)
